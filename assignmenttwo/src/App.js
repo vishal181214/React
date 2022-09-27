@@ -1,13 +1,12 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import ClassComponent from './Component/ClassComponent'
-import {FunctionalComponent} from './Component/FunctionalComponent'
+
+import {FinalForm} from './Component/FinalForm'
 function App() {
   return (
     <div className="App">
       <h1>EMPLOYEE FEEDBACK FORM</h1>
-      <ClassComponent />
-      <FunctionalComponent />
+      <FinalForm />
     </div>
   );
 }
