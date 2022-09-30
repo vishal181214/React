@@ -32,10 +32,6 @@ export const FinalForm = (props) => {
                 <label htmlFor="rate">Rate :</label>
                 <input name="rate" value={rate} onChange={(e)=>setRate(e.target.value)} className="inpField"/><br/><br/>
                 <Link to={{pathname:"/FormData", search:`?name=${name}&derpat=${depart}&rate=${rate}`}} className="btn btn-primary">Submit</Link>
-                
-
-                
-
             </form>
             {
                 <div className='showData'>

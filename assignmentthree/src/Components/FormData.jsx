@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useLocation} from 'react-router-dom'
 
-export const FormData = (props) => {
+export const FormData = () => {
     const [list,setList] = useState([]);
     // let newlist = [];
     const location = useLocation();
@@ -11,10 +11,13 @@ export const FormData = (props) => {
    const depart = urlParam.get("derpat");
    const rate = urlParam.get("rate");
    const data = [{"name":name,"depart":depart,"rate":rate}];
-   
    useEffect(()=>{
     console.log("Inside useEffect");
-    setList(oldArray =>[...oldArray,{"name":name,"depart":depart,"rate":rate}]);
+    setList({"name":name,"depart":depart,"rate":rate});
+    // const updateArray = list;
+    // list.push({name:name,depart:depart,rate:rate});
+    // setList({list:updateArray});
+    // setList(oldArray =>[...oldArray,{"name":name,"depart":depart,"rate":rate}]);
 //     newlist = [...list]
 //     newlist.push(data);
 //     setList(newlist);
@@ -24,13 +27,13 @@ export const FormData = (props) => {
     return(
         <div>
             <div>
-                {list.map(({item,index}) =>{
-                    <div key={index}>
-                        <span>Name : {item} | </span>
-                        <span>Department : {item} | </span>
-                        <span>Rating : {item}</span>
+                {/* {list.map(({item,index}) =>{ */}
+                    <div>
+                        <span>Name : {name} | </span>
+                        <span>Department : {depart} | </span>
+                        <span>Rating : {rate}</span>
                     </div>
-                  })}
+                  {/* })} */}
             </div>
         </div>
     )
