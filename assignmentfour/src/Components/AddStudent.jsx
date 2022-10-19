@@ -1,21 +1,15 @@
-import { Link, useLocation } from 'react-router-dom'
-import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import React from 'react'
 
-export const AddStudent = () => {
-    const [fname, setName] = useState('');
-    const [age, setAge] = useState('');
-    const [course, setCourse] = useState('');
-    const [batch, setBatch] = useState('');
-    const [list, setList] = useState('');
-    const data = {fname,age,course,batch};
+export const AddStudent = (props) => {
 
-    const handleSubmit = (e) =>{
-        if(fname && age && course && batch)
-        setList((lis)=>[...lis,data]);
-        
-        console.log(list);
+    const handle = () => {
+        let upList = [...props.list];
+        let currList = upList[props.list.length];
+        currList = { id: props.id + 1, name: props.name, age: props.age, course: props.course, batch: props.batch };
+        upList[props.list.length] = currList;
+        props.setList(upList);
     }
-
     return (
         <div className='main-nav'>
             <div className='menu-link'>
@@ -27,29 +21,29 @@ export const AddStudent = () => {
             </div>
             <div className='contentDiv'>
                 <div className='inputField'>
-                <fieldset>
-                    <legend>Name</legend>
-                    <input type="text" name="name" value={fname} onChange={((e)=>setName(e.target.value))} />
-                </fieldset>
-                <fieldset>
-                    <legend>Age</legend>
-                    <input type="text" name="age" value={age} onChange={((e)=>setAge(e.target.value))}/>
-                </fieldset>
-                <fieldset>
-                    <legend>Course</legend>
-                    <input type="text" name="course" value={course}  onChange={((e)=>setCourse(e.target.value))}/>
-                </fieldset>
-                <fieldset>
-                    <legend>Batch</legend>
-                    <input type="text" name="batch" value={batch}  onChange={((e)=>setBatch(e.target.value))}/>
-                </fieldset>
+                    <fieldset>
+                        <legend>Name</legend>
+                        <input type="text" placeholder="name" onChange={(e) => props.setName(e.target.value)} />
+                    </fieldset>
+                    <fieldset>
+                        <legend>Age</legend>
+                        <input type="text" placeholder="age" onChange={(e) => props.setAge(e.target.value)} />
+                    </fieldset>
+                    <fieldset>
+                        <legend>Course</legend>
+                        <input type="text" placeholder="course" onChange={(e) => props.setCourse(e.target.value)} />
+                    </fieldset>
+                    <fieldset>
+                        <legend>Batch</legend>
+                        <input type="text" placeholder="batch" onChange={(e) => props.setBatch(e.target.value)} />
+                    </fieldset>
                 </div>
                 <div className='bttnClass'>
-                <Link to='/Students' style={{ textDecoration: 'none' }} className="menuColor"><button className='canBtn'>Cancel</button></Link>
-                <button onClick={handleSubmit} className='upbtn'>Add</button>
+                    <Link to='/Students' style={{ textDecoration: 'none' }} className="menuColor"><button className='canBtn'>Cancel</button></Link>
+                    <Link to={'/Students'} style={{ textDecoration: 'none' }} className="menuColor"><button className='upbtn' onClick={handle}>Add</button></Link>
                 </div>
             </div>
         </div>
     )
-}  
+}
 
